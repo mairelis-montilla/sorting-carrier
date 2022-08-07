@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/index.js"
+    "start": "serve ./src"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/mairelis-montilla/sorting-carrier#readme",
   "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/plugin-transform-modules-commonjs": "^7.18.6",
     "eslint": "^8.21.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0"
+    "eslint-plugin-import": "^2.26.0",
+    "serve": "^14.0.1"
   }
 }

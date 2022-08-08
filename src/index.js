@@ -1,17 +1,21 @@
-/* eslint-disable no-shadow */
-/* eslint-disable no-console */
-// eslint-disable-next-line import/extensions
 import { values, json } from './constants.js';
 
 const objectDefault = {};
 const cardContainer = document.getElementById('card-container');
-
+const coveredLocality = document.getElementById('covered-locality');
+const coverageByCarrier = [];
 const getData = () => {
   Object.entries(json.data).forEach(([key, val]) => {
     const greaterLimit = val.reduce(
       (accum, currentVal) => (accum?.limit > currentVal.limit ? accum : currentVal),
     );
-
+    const coverage = val.length;
+    const services = val.map((e) => ({ over: values[e.over_carrier_service_id].service, under: values[e.under_carrier_service_id].service }));
+    coverageByCarrier.push({
+      name: key,
+      coverage,
+      services,
+    });
     objectDefault[key] = {
       limit: greaterLimit.limit,
       over: {
@@ -27,7 +31,7 @@ const getData = () => {
   console.log(objectDefault);
 };
 getData();
-
+coveredLocality.innerHTML = coverageByCarrier.reduce((accum, currentVal) => (accum?.coverage > currentVal.coverage ? accum : currentVal)).name;
 Object.entries(objectDefault).forEach(([key, val]) => {
   const card = document.createElement('div');
   card.className = 'card';

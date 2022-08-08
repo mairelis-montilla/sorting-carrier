@@ -4,6 +4,9 @@
 }
 
 .card{
-  width: 30%;
+  width: 200px;
   padding: 10px 15px;
+  margin: 10px;
+  border: 2px solid blue;
+  border-radius: 3px;
 }

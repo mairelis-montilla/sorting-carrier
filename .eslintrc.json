@@ -12,5 +12,7 @@
         "sourceType": "module"
     },
     "rules": {
+        "import/extensions": "off",
+        "max-len": "off"
     }
 }
